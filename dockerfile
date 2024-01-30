@@ -18,6 +18,7 @@ COPY requirements.txt requirements.txt
 RUN venv/bin/pip install --no-cache-dir -r requirements.txt
 
 # Copy the entire project to the working directory
+# Copy only necessary files from the build stage
 COPY . .
 
 # Expose the default FastAPI port

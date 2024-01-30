@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const apiBaseUrl = 'http://127.0.0.1:8000';
+const apiBaseUrl = "http://52.215.255.43:8000";
 
 class AppColours {
   static const Color darkBlue = Color(0xFF015D98);

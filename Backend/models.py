@@ -1,6 +1,6 @@
 from typing import Union, Annotated
 from sqlalchemy import Column, Integer, String, Text, Date, LargeBinary, Boolean
-from database import Base
+from Backend.database import Base
 
 
 # class Item(BaseModel):

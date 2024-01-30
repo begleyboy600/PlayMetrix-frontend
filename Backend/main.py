@@ -1,10 +1,10 @@
 from sqlalchemy.orm import Session
-from models import *
-from database import SessionLocal, Base, engine
+from Backend.models import *
+from Backend.database import SessionLocal, Base, engine
 from fastapi import Depends, FastAPI, HTTPException, Response
 from fastapi.responses import RedirectResponse
-from schema import *
-import crud as crud
+from Backend.schema import *
+import Backend.crud as crud
 import pytest
 from sqlalchemy.orm import sessionmaker
 from tavern.core import run
@@ -15,9 +15,14 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
+origins = [
+    "http://52.215.255.43:80",  # Your frontend URL
+    "http://52.215.255.43:8000",
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -574,4 +579,4 @@ def cleanup(db:Session = Depends(get_db)):
 #endregion
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True, log_level="debug")
+    uvicorn.run("main:app", host="52.215.255.43", port=8000, reload=True, log_level="debug")
